@@ -1,0 +1,60 @@
+[package]
+name = "btc-relay"
+version = "2.0.8-1"
+authors = ["The ChainX Authors"]
+edition = "2018"
+build = "build.rs"
+description = "Relay BTC header and transactions to a ChainX node via RPC"
+readme = "README.md"
+license = "GPL-3.0"
+
+[[bin]]
+name = "btc-relay"
+path = "src/bin/main.rs"
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
+anyhow = "1.0"
+async-jsonrpc-client = { version = "0.3", default-features = false, features = ["http"] }
+async-trait = "0.1"
+bs58 = "0.4"
+base64 = "0.13"
+codec = { package = "parity-scale-codec", version = "2.0", features = ["derive", "full"] }
+futures = "0.3"
+hex = "0.4"
+lazy_static = "1.4"
+log = { version = "0.4", features = ["std", "serde"] }
+log4rs = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+structopt = "0.3"
+thiserror = "1.0"
+tokio = { version = "1.5", features = ["macros", "rt-threaded", "time"] }
+url = { version = "2.1", features = ["serde"] }
+
+async-io = "1.3.1"
+
+# Substrate (v3)
+# sp-core = { git = "https://github.com/paritytech/substrate", rev = "f14488dfca012659297d2b4676fab91c179095dd" }
+# sp-runtime = { git = "https://github.com/paritytech/substrate", rev = "f14488dfca012659297d2b4676fab91c179095dd" }
+# sp-keyring = { git = "https://github.com/paritytech/substrate", rev = "f14488dfca012659297d2b4676fab91c179095dd" }
+# pallet-indices = { git = "https://github.com/paritytech/substrate", rev = "f14488dfca012659297d2b4676fab91c179095dd" }
+sp-core = { version = "3.0" }
+sp-runtime = { version = "3.0" }
+sp-keyring = { version = "3.0" }
+pallet-indices = { version = "3.0" }
+subxt = { package = "substrate-subxt", version = "0.15" }
+
+# light-bitcoin
+light-bitcoin = { git = "https://github.com/chainx-org/light-bitcoin", branch = "master" }
+
+# ChainX
+xp-gateway-bitcoin-v2 = { package = "xpallet-gateway-bitcoin-v2", path = "../ChainX/xpallets/gateway/bitcoin/v2" }
+# xp-gateway-bitcoin = { package = "xpallet-gateway-bitcoin", path = "../ChainX/xpallets/gateway/bitcoin/v1" }
+# gateway-bitcoin-primitive = { path="../ChainX/primitives/gateway/bitcoin" }
+xp-gateway-bitcoin = { path = "../ChainX/primitives/gateway/bitcoin", features = ["ss58check"] }
+
+#cli

@@ -1,0 +1,12 @@
+{
+  "btc-url": "http://auth:bitcoin-b2dd077@115.29.163.193:18332",
+  "btc-block-interval": 120,
+  "chainx-url": "ws://localhost:8087",
+  "chainx-signer": "bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice",
+  "only-header": false,
+  "log-path": "log/btc_relay.log",
+  "log-level": "TRACE",
+  "log-roll-size": 100,
+  "log-roll-count": 5,
+  "rpc-timeout": 30
+}
